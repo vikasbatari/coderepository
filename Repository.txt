@@ -59,6 +59,77 @@ https://stackoverflow.com/questions/23821235/how-to-link-to-specific-line-number
 --------------------------------------------------------------------------------------------------------------------------------------
 
 
+Query Striing in Blazor
+
+
+-> Set values to query string
+
+@inject NavigationManager NavigationManager  //it should be included in razor page
+
+
+
+
+var query = new Dictionary<string, string>
+            {
+                {"category" ,dest.Subject},
+                {"subcategory",dest.Topic }
+               
+                };
+            NavigationManager.NavigateTo(QueryHelpers.AddQueryString("/setexamquestionpaper", query));
+
+
+-> get values from query string
+
+
+@page "/setexamquestionpapers/{category}/{subcategory}"
+
+
+        [Parameter]
+        public string category{ get; set; }
+
+        [Parameter]
+        public string subcategory{ get; set; }
+
+
+
+        private string qcategory;
+        private string qsubcategory;
+
+
+ var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+            if(QueryHelpers.ParseQuery(uri.Query).TryGetValue("category",out category))
+            {
+                qcategory = category;
+            }
+            if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("subcategory", out subcategory))
+            {
+                qsubcategory = subcategory;
+            }
+
+
+
+-------------------------------------------------------
+
+simle query string
+
+ <a href="@($"setobjectiveexamquestionpaper/{exam.ExamId}")" class="nav-link">Set Questions </a>
+
+--------------------------------------------------------------------------
+        string parametervalue = args.RowData.TableId.ToString();
+        NavigationManager.NavigateTo("/editproduct/"+ parametervalue +"");
+
+
+   @page "/editproduct/{id:int}"
+
+
+[Parameter]
+        public int id { get; set; }
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
