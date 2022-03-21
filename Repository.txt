@@ -1,0 +1,20 @@
+
+-> Add following two namespaces
+
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+
+->inject the following property
+
+        [Inject]
+ IHttpContextAccessor HttpContextAccessor { get; set; }
+
+
+-> than add following code
+
+ protected override async Task OnInitializedAsync()
+        {
+            var principal = HttpContextAccessor.HttpContext.User;
+            var loggedInUserId = principal.FindFirstValue(ClaimTypes.NameIdentifier);
+           
+        }
