@@ -1,3 +1,5 @@
+How to get Logged in user id in blazor?
+
 
 -> Add following two namespaces
 
@@ -18,3 +20,47 @@ using System.Security.Claims;
             var loggedInUserId = principal.FindFirstValue(ClaimTypes.NameIdentifier);
            
         }
+---------------------------------------------------------------------------------------------------------------------
+
+
+How to link to specific line number on github ?
+
+Click on the line number you want (like line 18), and the URL in your browser will get a #L18 tacked onto the end. You literally click on the 18 at the left side, not the line of code.
+
+
+And now your browser's URL looks like this:
+
+https://github.com/git/git/blob/master/README#L18
+
+
+If you want multiple lines selected, simply hold down the shift key and click a second line number, like line 20.
+
+
+And now your browser's URL looks like this:
+
+https://github.com/git/git/blob/master/README#L18-L20
+
+Here's the important part:
+
+Now get the canonical url for that particular commit by pressing the y key. The URL in your browser will change to become something like 
+this:
+
+https://github.com/git/git/blob/5bdb7a78adf2a2656a1915e6fa656aecb45c1fc3/README#L18-L2
+
+
+That link contains the actual SHA hash for that particular commit, rather than the current version of the file on master. That means that this link will work forever and not point to lines 18-20 of whatever future version of that file might contain.
+
+
+for more refrence following is the url:-
+
+
+https://stackoverflow.com/questions/23821235/how-to-link-to-specific-line-number-on-github
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
